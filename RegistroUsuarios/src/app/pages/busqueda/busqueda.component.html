@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Buscador de países</h1>
+    <form>
+        <div class="mb-3">
+            <label for="input-buscar" class="form-label">Buscar país</label>
+            <input type="text" class="form-control" id="input-buscar" placeholder="Ingrese el nombre de un país">
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Capital</th>
+                <th>Región</th>
+                <th>Subregión</th>
+                <th>Moneda</th>
+                <th>Idioma</th>
+                <th>Favorito</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pais of paises">
+                <td>{{ pais.name }}</td>
+                <td>{{ pais.capital }}</td>
+                <td>{{ pais.region }}</td>
+                <td>{{ pais.subregion }}</td>
+                <td>{{ pais.currencies[0].name }} ({{ pais.currencies[0].symbol }})</td>
+                <td>{{ pais.languages[0].name }}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="agregarFavorito(pais)" [disabled]="esFavorito(pais)">Agregar a favoritos</button>
+                    <button type="button" class="btn btn-danger" (click)="eliminarFavorito(pais)" [disabled]="!esFavorito(pais)">Eliminar de favoritos</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

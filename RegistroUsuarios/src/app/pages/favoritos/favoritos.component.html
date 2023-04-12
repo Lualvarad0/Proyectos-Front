@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Países Favoritos</h1>
+    <div *ngIf="favoritos.length === 0">
+        <p>No hay países favoritos aún</p>
+    </div>
+    <table class="table table-striped" *ngIf="favoritos.length > 0">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Capital</th>
+                <th>Región</th>
+                <th>Subregión</th>
+                <th>Moneda</th>
+                <th>Idioma</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pais of favoritos; let i = index">
+                <td>{{ pais.name }}</td>
+                <td>{{ pais.capital }}</td>
+                <td>{{ pais.region }}</td>
+                <td>{{ pais.subregion }}</td>
+                <td>{{ pais.currencies[0].name }} ({{ pais.currencies[0].symbol }})</td>
+                <td>{{ pais.languages[0].name }}</td>
+                <td>
+                    <button (click)="eliminarFavorito(i)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
